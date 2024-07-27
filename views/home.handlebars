@@ -1,0 +1,14 @@
+<h1 class="mb-4">Latest Tech Blog Posts</h1>
+
+{{#each posts}}
+<div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h2 class="h4 mb-0">{{title}}</h2>
+        <span class="text-muted">Posted by {{user.username}} on {{format_date createdAt}}</span>
+    </div>
+    <div class="card-body">
+        <p class="card-text">{{content}}</p>
+        <a href="/post/{{id}}" class="btn btn-primary">Read More</a>
+    </div>
+</div>
+{{/each}}

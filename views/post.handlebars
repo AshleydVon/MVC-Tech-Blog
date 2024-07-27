@@ -1,0 +1,22 @@
+<div class="post">
+  <h2>{{title}}</h2>
+  <p>{{content}}</p>
+  <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
+</div>
+
+<div class="comments">
+  {{#each comments}}
+    <div class="comment">
+      <p>{{content}}</p>
+      <p>Commented by {{user.username}} on {{format_date createdAt}}</p>
+    </div>
+  {{/each}}
+</div>
+
+<form class="comment-form">
+  <div>
+    <label for="comment-text">Add a Comment</label>
+    <textarea id="comment-text" name="comment-text"></textarea>
+  </div>
+  <button type="submit">Add Comment</button>
+</form>

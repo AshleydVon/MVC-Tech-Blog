@@ -1,0 +1,112 @@
+/* Base styles */
+body {
+    font-family: 'Kalnia', serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    font-variation-settings: "wdth" 100;
+    background-color: #f8f9fa;
+}
+
+/* Navbar styles */
+.navbar {
+    box-shadow: 0 2px 4px rgba(0,0,0,.1);
+}
+
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* Card styles */
+.card {
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,.1);
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0,0,0,.15);
+}
+
+.card-header {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+}
+
+/* Button styles */
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    font-weight: 500;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Form styles */
+.form-control:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+/* Text styles */
+.text-muted {
+    font-size: 0.9rem;
+    font-weight: 300;
+}
+
+/* Heading styles */
+h1, .h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+h2, .h2 {
+    font-weight: 600;
+    font-size: 2rem;
+}
+
+h3, .h3 {
+    font-weight: 500;
+    font-size: 1.75rem;
+}
+
+h4, .h4 {
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+h5, .h5 {
+    font-weight: 400;
+    font-size: 1.25rem;
+}
+
+/* Custom classes for different font weights */
+.kalnia-thin {
+    font-weight: 100;
+}
+
+.kalnia-light {
+    font-weight: 300;
+}
+
+.kalnia-regular {
+    font-weight: 400;
+}
+
+.kalnia-medium {
+    font-weight: 500;
+}
+
+.kalnia-semibold {
+    font-weight: 600;
+}
+
+.kalnia-bold {
+    font-weight: 700;
+}
