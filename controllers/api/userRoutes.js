@@ -4,7 +4,11 @@ const { User } = require('../../models');
 // CREATE new user
 router.post('/', async (req, res) => {
   try {
-    const userData = await User.create(req.body);
+    const userData = await User.create({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password
+    });
 
     req.session.save(() => {
       req.session.user_id = userData.id;
@@ -13,11 +17,16 @@ router.post('/', async (req, res) => {
       res.status(200).json(userData);
     });
   } catch (err) {
-    res.status(400).json(err);
+    console.error('Error creating user:', err);
+    if (err.name === 'SequelizeUniqueConstraintError') {
+      res.status(400).json({ message: 'Username or email already exists' });
+    } else {
+      res.status(400).json({ message: 'Failed to create user', error: err.message });
+    }
   }
 });
 
-// Login
+// Login route
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -50,7 +59,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// Logout
+// Logout route
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
