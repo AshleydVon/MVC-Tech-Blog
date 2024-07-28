@@ -1,45 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login</title>
-</head>
-<body>
-  <h1>Login</h1>
-  <form action="/api/auth/login" method="POST" class="login-form">
-    <label for="username-login">Username:</label>
-    <input type="text" id="username-login" name="username" required>
-    
-    <label for="password-login">Password:</label>
-    <input type="password" id="password-login" name="password" required>
-    
-    <button type="submit">Login</button>
-  </form>
+<div class="row justify-content-center">
+  <div class="col-md-6">
+    <h2 class="mb-4">Login</h2>
+    <form class="login-form">
+      <div class="mb-3">
+        <label for="email-login" class="form-label">Email:</label>
+        <input type="email" class="form-control" id="email-login" name="email" required>
+      </div>
+      <div class="mb-3">
+        <label for="password-login" class="form-label">Password:</label>
+        <input type="password" class="form-control" id="password-login" name="password" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+    <p class="mt-3">Don't have an account? <a href="/signup">Sign up here</a></p>
+  </div>
+</div>
 
-  <script>
-    const loginFormHandler = async (event) => {
-      event.preventDefault();
+<script>
+  const loginFormHandler = async (event) => {
+    event.preventDefault();
 
-      const username = document.querySelector('#username-login').value.trim();
-      const password = document.querySelector('#password-login').value.trim();
+    const email = document.querySelector('#email-login').value.trim();
+    const password = document.querySelector('#password-login').value.trim();
 
-      if (username && password) {
-        const response = await fetch('/api/auth/login', {
-          method: 'POST',
-          body: JSON.stringify({ username, password }),
-          headers: { 'Content-Type': 'application/json' },
-        });
+    if (email && password) {
+      const response = await fetch('/api/users/login', {
+        method: 'POST',
+        body: JSON.stringify({ email, password }),
+        headers: { 'Content-Type': 'application/json' },
+      });
 
-        if (response.ok) {
-          document.location.replace('/dashboard');
-        } else {
-          alert('Failed to log in');
-        }
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert('Failed to log in');
       }
-    };
+    }
+  };
 
-    document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
-  </script>
-</body>
-</html>
+  document.querySelector('.login-form').addEventListener('submit', loginFormHandler);
+</script>
