@@ -8,7 +8,7 @@ The Tech Blog is a CMS-style blog site where developers can publish their blog p
 
 1. Clone the repository
 2. Run `npm install` to install dependencies
-3. Set up your MySQL database and update the `.env` file with your credentials
+3. Set up your PostgreSQL database and update the `.env` file with your credentials
 4. Run `npm run seed` to seed the database (if applicable)
 5. Run `npm start` to start the server
 
@@ -27,7 +27,7 @@ Visit the deployed application to view existing blog posts, create an account, l
 
 - Node.js
 - Express.js
-- MySQL
+- PostgreSQL
 - Sequelize ORM
 - Handlebars.js
 - express-session for authentication
