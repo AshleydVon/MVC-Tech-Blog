@@ -39,6 +39,11 @@ router.get('/post/:id', async (req, res) => {
       ],
     });
 
+    if (!postData) {
+      res.status(404).json({ message: 'No post found with this id!' });
+      return;
+    }
+
     const post = postData.get({ plain: true });
 
     res.render('post', {
@@ -56,6 +61,11 @@ router.get('/dashboard', withAuth, async (req, res) => {
       attributes: { exclude: ['password'] },
       include: [{ model: Post }],
     });
+
+    if (!userData) {
+      res.status(404).json({ message: 'No user found with this id!' });
+      return;
+    }
 
     const user = userData.get({ plain: true });
 

@@ -13,10 +13,14 @@
   {{/each}}
 </div>
 
-<form class="comment-form">
-  <div>
-    <label for="comment-text">Add a Comment</label>
-    <textarea id="comment-text" name="comment-text"></textarea>
-  </div>
-  <button type="submit">Add Comment</button>
-</form>
+{{#if logged_in}}
+  <form class="comment-form">
+    <div class="mb-3">
+      <label for="comment-content" class="form-label">Add a Comment</label>
+      <textarea id="comment-content" class="form-control" rows="3" required></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+  </form>
+{{/if}}
+
+<script src="/js/comment.js"></script>
