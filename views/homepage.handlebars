@@ -1,8 +1,13 @@
-{{!-- views/homepage.handlebars --}}
-{{#each posts}}
-  <div class="post">
-    <h2><a href="/post/{{id}}">{{title}}</a></h2>
-    <p>{{content}}</p>
-    <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
-  </div>
-{{/each}}
+<div class="row">
+    {{#each posts}}
+    <div class="col-md-6 mb-4">
+        <div class="card h-100">
+            <div class="card-body">
+                <h2 class="card-title h4"><a href="/post/{{id}}" class="text-light">{{title}}</a></h2>
+                <p class="card-text">{{truncate content 150}}</p>
+                <p class="post-meta">Posted by {{user.username}} on {{format_date createdAt}}</p>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

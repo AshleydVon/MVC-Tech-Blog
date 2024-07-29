@@ -1,27 +1,36 @@
-<div class="post">
-  <h2>{{title}}</h2>
-  <p>{{content}}</p>
-  <p>Posted by {{user.username}} on {{format_date createdAt}}</p>
+<div class="card mb-4">
+    <div class="card-body">
+        <h2 class="card-title">{{title}}</h2>
+        <p class="card-text">{{content}}</p>
+        <p class="post-meta">Posted by {{user.username}} on {{format_date createdAt}}</p>
+    </div>
 </div>
 
-<div class="comments">
-  {{#each comments}}
+<h3 class="mb-3">Comments</h3>
+<div class="comments mb-4">
+    {{#each comments}}
     <div class="comment">
-      <p>{{content}}</p>
-      <p>Commented by {{user.username}} on {{format_date createdAt}}</p>
-      <button data-id="{{id}}" class="btn btn-danger delete-comment">Delete Comment</button>
+        <p>{{content}}</p>
+        <p class="post-meta">Commented by {{user.username}} on {{format_date createdAt}}</p>
+        {{#if ../logged_in}}
+        <button data-id="{{id}}" class="btn btn-sm btn-danger delete-comment">Delete</button>
+        {{/if}}
     </div>
-  {{/each}}
+    {{/each}}
 </div>
 
 {{#if logged_in}}
-  <form class="comment-form">
-    <div class="mb-3">
-      <label for="comment-content" class="form-label">Add a Comment</label>
-      <textarea id="comment-content" class="form-control" rows="3" required></textarea>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Add a Comment</h4>
+        <form class="comment-form">
+            <div class="mb-3">
+                <textarea id="comment-content" class="form-control" rows="3" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit Comment</button>
+        </form>
     </div>
-    <button type="submit" class="btn btn-primary">Submit Comment</button>
-  </form>
+</div>
 {{/if}}
 
 <script src="/js/comment.js"></script>
